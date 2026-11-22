@@ -25,3 +25,14 @@ jobs:
 
       - name: Build
         run: cmake --build build-ios --config Release
+        - name: Package iOS app
+        run: |
+          mkdir -p Payload
+          cp -R build-ios/Release-iphoneos/nothing.app Payload/
+          zip -r nothing.ipa Payload
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nothing-iOS-IPA
+          path: nothing.ipa
