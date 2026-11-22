@@ -169,7 +169,7 @@ add_executable(nothing
   src/ring_buffer.c
 )
 if(IOS)
-    target_link_libraries(nothing PRIVATE SDL2::SDL2-static)
+    target_link_libraries(nothing PRIVATE SDL2::SDL2main SDL2::SDL2-static)
 elseif(TARGET SDL2::SDL2)
     target_link_libraries(nothing PRIVATE SDL2::SDL2)
 else()
