@@ -1,28 +1,11 @@
-name: iOS Build
+Check failure on line 25 in .github/workflows/ios.yml
 
-on:
-  workflow_dispatch:
-  push:
-    branches: [main]
 
-jobs:
-  build:
-    runs-on: macos-latest
+GitHub Actions
+/ .github/workflows/ios.yml
+Invalid workflow file
 
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Configure iOS build
-        run: |
-          cmake -S . -B build-ios -G Xcode \
-            -DCMAKE_SYSTEM_NAME=iOS \
-            -DIOS=ON \
-            -DCMAKE_OSX_SYSROOT=iphoneos \
-            -DCMAKE_OSX_ARCHITECTURES=arm64 \
-            -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 \
-            -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED=NO
-
+You have an error in your yaml syntax on line 25
       - name: Build
         run: cmake --build build-ios --config Release
         - name: Package iOS app
@@ -30,7 +13,6 @@ jobs:
           mkdir -p Payload
           cp -R build-ios/Release-iphoneos/nothing.app Payload/
           zip -r nothing.ipa Payload
-
       - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
