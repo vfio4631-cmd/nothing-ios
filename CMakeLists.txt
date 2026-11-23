@@ -168,15 +168,15 @@ add_executable(nothing
   src/ring_buffer.h
   src/ring_buffer.c
     )
-    if(IOS)
-       set_target_properties(nothing PROPERTIES
+if(IOS)
+    set_target_properties(nothing PROPERTIES
         MACOSX_BUNDLE TRUE
         MACOSX_BUNDLE_GUI_IDENTIFIER "com.vfio4631.nothing"
         MACOSX_BUNDLE_BUNDLE_NAME "Nothing"
         MACOSX_BUNDLE_BUNDLE_VERSION "1.0"
         MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0"
+    )
 endif()
-)
 if(IOS)
     target_link_libraries(nothing PRIVATE SDL2::SDL2main SDL2::SDL2-static)
 elseif(TARGET SDL2::SDL2)
