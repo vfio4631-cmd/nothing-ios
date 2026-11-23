@@ -29,6 +29,8 @@ jobs:
         run: |
           mkdir -p Payload
           cp -R build-ios/Release-iphoneos/nothing.app Payload/
+          cp -R assets Payload/nothing.app/
+
           zip -r nothing.ipa Payload
 
       - name: Upload IPA
